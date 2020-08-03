@@ -24,13 +24,13 @@ class App {
     private middleware(): void {
         this.express.use(bodyParser.json());
         this.express.use(bodyParser.urlencoded({ extended: false }));
-        this.express.use(express.static(path.join(__dirname,"../my-app/dist/angular-nodejs-example/")));
+        this.express.use(express.static(process.cwd() + "/my-app/dist/angular-nodejs-example/"));
     }
 
     private routes(): void {
 
         this.express.get("/", (req, res, next) => {
-            res.sendFile(path.join(__dirname, "../my-app/dist/angular-nodejs-example/index.html"))
+            res.sendFile(process.cwd() + "/my-app/dist/angular-nodejs-example/index.html")
         });
 
         // user route
